@@ -16,4 +16,5 @@ end
 
 group :development do
   gem "powder"
+  gem "capistrano-ext"
 end
