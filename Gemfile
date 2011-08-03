@@ -4,7 +4,7 @@ gem 'bundler', "~>1.0.10"
 gem "rails", "2.3.11"
 gem "mysql"
 gem "erubis"
-gem "rake"
+gem "rake", "0.8.7"
 gem "syntax", "1.0.0"
 gem "capistrano", "2.6.0"
 gem "open4", "0.9.3"
@@ -17,4 +17,5 @@ end
 group :development do
   gem "powder"
   gem "capistrano-ext"
+  gem "chef", "0.9.16"
 end
