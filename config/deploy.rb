@@ -13,9 +13,9 @@ set :rails_env, "production"
 set :user, 'apache'
 set :use_sudo, false
 
-role :web, "deploy.dc.customink.com"                          # Your HTTP server, Apache/etc
-role :app, "deploy.dc.customink.com"                          # This may be the same as your `Web` server
-role :db,  "deploy.dc.customink.com", :primary => true # This is where Rails migrations will run
+role :web, "deploy.dc.customink.com"
+role :app, "deploy.dc.customink.com"
+role :db, "deploy.dc.customink.com", {:primary => true}
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
@@ -26,4 +26,13 @@ namespace :deploy do
   end
 end
 
+desc "links the webistrano_config and database.yml files from the shared directory"
+task :link_config_files, :roles => [:app] do
+  %w(database.yml webistrano_config.rb).each do |f|
+    run "ln -nfs #{deploy_to}/#{shared_dir}/config/#{f} #{release_path}/config/#{f}"
+  end
+end
+
+after "deploy:update_code", "link_config_files"
+after "deploy:update_code", "deploy:migrate", :roles => :db
 after "deploy:restart", "deploy:cleanup"
