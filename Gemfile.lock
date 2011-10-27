@@ -25,14 +25,14 @@ GEM
       erubis
       extlib
       highline
-      json (<= 1.4.6, >= 1.4.4)
+      json (>= 1.4.4, <= 1.4.6)
       mixlib-authentication (>= 1.1.0)
       mixlib-cli (>= 1.1.0)
       mixlib-config (>= 1.1.2)
       mixlib-log (>= 1.2.0)
       moneta
       ohai (>= 0.5.7)
-      rest-client (< 1.7.0, >= 1.0.4)
+      rest-client (>= 1.0.4, < 1.7.0)
       uuidtools
     erubis (2.7.0)
     exception_notification (2.3.3.0)
@@ -89,7 +89,7 @@ DEPENDENCIES
   bundler (~> 1.0.10)
   capistrano (= 2.6.0)
   capistrano-ext
-  chef (= 0.9.16)
+  chef
   erubis
   exception_notification (= 2.3.3.0)
   mocha (= 0.9.8)
